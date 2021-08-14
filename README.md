@@ -12,7 +12,7 @@ This awesome project will be deployed soon :)
 
 ## :star: Contributions
 
-This is an open-source project, feel free to enhance the same by your valuable contributions. Make sure to follow the [guidelines](CONTRIBUTING.md).
+This is an open-source project, feel free to enhance the same by your valuable contributions. Make sure to follow the [open-source contribution guidelines](https://opensource.guide/how-to-contribute/).
 
 ## :star: Setup
 
