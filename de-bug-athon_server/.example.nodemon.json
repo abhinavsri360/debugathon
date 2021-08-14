@@ -1,0 +1,7 @@
+{
+    "env": {
+        "PORT" : 5000,
+        "CLIENT_ID" : "Your client id",
+        "CLIENT_SECRET": "your client secret"
+    }
+}

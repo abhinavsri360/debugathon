@@ -1,0 +1,5 @@
+de-bug-athon/node_modules
+de-bug-athon/.env
+de-bug-athon_server/node_modules
+de-bug-athon_server/nodemon.json
+*yarn.lock
