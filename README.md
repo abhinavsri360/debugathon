@@ -35,7 +35,7 @@ In order to setup the project locally, follow the steps:
 8. `npm start` or `yarn start` to run the project in development mode.
 9. You can find the postman documentation [here](https://documenter.getpostman.com/view/11578947/Tzz7QJTR)
 10. You would also need to setup your database, i.e., add 2 collections namely `users` and `codes`
-11. Example data can be found inside `Sample Data` as `users.json` and `codes.json`
+11. Example data can be found inside `sample_data` as `users.json` and `codes.json`
 
 ## :star: Frontend setup
 
