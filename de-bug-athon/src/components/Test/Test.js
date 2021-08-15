@@ -29,9 +29,9 @@ function Test(props) {
         <>
             <Grid container direction='row' justify='center' alignItems='center'>
                 <Grid item xs={4}>
-                    <h1>De-bug-athon</h1>
+                    <h1 style={{ color: '#FFEB3B' }}>De-bug-athon</h1>
                 </Grid>
-                <Grid item xs={2} style={{ marginBlockStart: '0.67em', marginBlockEnd: '0.67em' }}>
+                <Grid item xs={2} style={{ marginBlockStart: '0.67em', marginBlockEnd: '0.67em', color: '#FFEB3B' }}>
                     <FlipCountdown
                         theme='light'
                         hideYear

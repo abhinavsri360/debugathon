@@ -11,7 +11,7 @@ function Login(props) {
     const [loading, setLoading] = React.useState(false)
 
     if (loading)
-        return <Box>Loading...</Box>
+        return <p>Loading...</p>
 
     return (
         <Box display='flex' justifyContent='center'>
@@ -21,8 +21,8 @@ function Login(props) {
                     if (values.userId === '') {
                         error('Enter a valid User Id')
                     }
-                    setSubmitting(true)
                     setLoading(true)
+                    setSubmitting(true)
                     props.loginUser(values)
                     setLoading(false)
                 }}
@@ -31,9 +31,10 @@ function Login(props) {
                 isSubmitting
             }) => (
                 <Form className='centered'>
-                    <Field placeholder='User Id' className='field' type="userId" name="userId" style={{ padding: '10px', borderRadius: '15px', border: 'none', width: '500px' }} /><br />
+                    <h2>debug</h2>
+                    <Field placeholder='Enter your hash' className='field' type="userId" name="userId" /><br />
                     <ErrorMessage name='userId' component='div' /><br />
-                    <Button variant='contained' type="submit" disabled={isSubmitting} style={{ marginLeft: '210px' }}> Submit </Button>
+                    <Button variant='contained' type="submit" disabled={isSubmitting} style={{ marginLeft: '220px' }}> Enter </Button>
                 </Form>
             )}
             </Formik>

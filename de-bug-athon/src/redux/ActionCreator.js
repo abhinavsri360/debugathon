@@ -35,12 +35,20 @@ export const loginUser = (creds) => (dispatch) => {
   })
   .then((res) => {
     if (res.statusText === 'OK') {
-      success('Welcome to de-bug-athon')
-      dispatch(receiveLogin(creds.userId, res.data.code, res.data.level, res.data.time))
+      if (res.data.message === 'success') {
+        success('Welcome to de-bug-athon')
+        dispatch(receiveLogin(creds.userId, res.data.code, res.data.level, res.data.time))
+      } else if (res.data.message === 'user') {
+        error('Invalid user Id')
+        dispatch(loginError(res.data.message))
+      } else if (res.data.message === 'session') {
+        error('Session Limit exceeded')
+        dispatch(loginError(res.data.message))
+      }
     }
   })
   .catch((err) => {
-    error('Wrong user Id entered')
+    error('Server error')
     console.log(err);
     dispatch(loginError(err.message))
   })

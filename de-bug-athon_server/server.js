@@ -1,16 +1,16 @@
-var express = require("express");
-var request = require("request");
-const InitiateMongoServer = require("./db");
-InitiateMongoServer();
-const User = require("./User");
-const Code = require("./Code");
-var app = express();
-var cors = require("cors");
-const { default: nodeCluster } = require("node:cluster");
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(cors());
-const port = process.env.PORT || 5000;
+const express = require("express")
+const app = express()
+const cors = require("cors")
+app.use(cors())
+const InitiateMongoServer = require("./db")
+InitiateMongoServer()
+app.use(express.json())
+const User = require("./User")
+const Code = require("./Code")
+const request = require("request")
+app.use(express.urlencoded({ extended: true }))
+
+const PORT = process.env.PORT || 5000
 
 app.post("/login-auth", async (req, res) => {
   var userId = req.body.userId;
@@ -19,12 +19,12 @@ app.post("/login-auth", async (req, res) => {
       userId
     });
     if (!user)
-      return res.status(400).json({
-        message: "User Not Exist"
+      return res.status(200).json({
+        message: "user"
       });
     if (user.loggedIn === true) {
-      res.status(400).json({
-        message: 'User session limit exceeded'
+      res.status(200).json({
+        message: 'session'
       });
     } else {
       user.loggedInAt = Date.now();
@@ -33,7 +33,7 @@ app.post("/login-auth", async (req, res) => {
       user.time = Date.now();
       user.save();
       var userLevel = user.level;
-      let code = await Code.findOne({ level: userLevel });
+      const code = await Code.findOne({ level: userLevel });
       if (!code)
         return res.status(400).json({
           message: "Problem not found"
@@ -41,7 +41,8 @@ app.post("/login-auth", async (req, res) => {
       res.status(200).json({
         time: code.time,
         code: code.question,
-        level: code.level
+        level: code.level,
+        message: 'success'
       });
     }
   } catch (e) {
@@ -55,7 +56,7 @@ app.post("/compile", async (req, res) => {
   var bodyObj = JSON.parse(JSON.stringify(req.body));
 
   var userId = bodyObj.userId.toString();
-  let user = await User.findOne({
+  var user = await User.findOne({
     userId
   });
   if (!user)
@@ -63,8 +64,8 @@ app.post("/compile", async (req, res) => {
       message: "User Not Exist"
     });
 
-  let code = bodyObj.code.toString();
-  let language = bodyObj.language.toString();
+  const code = bodyObj.code.toString();
+  const language = bodyObj.language.toString();
 
   var program = {
     script: code,
@@ -87,12 +88,13 @@ app.post("/compile", async (req, res) => {
       // console.log("statusCode:", response && response.statusCode);
       // console.log("body:", body);
       try {
-        let code2 = await Code.findOne({ level: userLevel });
+        const code2 = await Code.findOne({ level: userLevel });
+        const maxCount = await Code.countDocuments({})
         if (code2.solution.toString() == body.output.toString().slice(0,-1)) {
           user.level = userLevel + 1;
           user.time = user.time.getTime() + (Date.now() - user.time.getTime());
           user.save();
-          if ( user.level <= 2 ) {
+          if ( user.level <= maxCount ) {
             newCode = await Code.findOne({ level: userLevel + 1 });
             res
               .status(200)
@@ -128,6 +130,6 @@ app.post("/compile", async (req, res) => {
   );
 });
 
-app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server listening at http://localhost:${PORT}`);
 });
