@@ -29,10 +29,13 @@ In order to setup the project locally, follow the steps:
 2. Move to your creds [here](https://www.jdoodle.com/compiler-api) :closed_lock_with_key:
 3. `cd de-bug-athon_server` from the root folder of this clone repository.
 4. Rename `.example.nodemon.json` to `nodemon.json`
-5. Enter your `CLIENT_ID` and `CLIENT_SECRET` into the file renamed above.
-6. `npm i` or `yarn install` to install the dependencies involved in the project. [P.S. - I prefer `yarn`]
-7. `npm start` or `yarn start` to run the project in development mode.
-8. You can find the postman documentation [here](https://documenter.getpostman.com/view/11578947/Tzz7QJTR)
+5. Enter your `CLIENT_ID` and `CLIENT_SECRET` into the file renamed above from the `creds` page of `jdoodle`.
+6. Enter your `MONGO_URI` as well to connect the server to the database.
+7. `npm i` or `yarn install` to install the dependencies involved in the project. [P.S. - I prefer `yarn`]
+8. `npm start` or `yarn start` to run the project in development mode.
+9. You can find the postman documentation [here](https://documenter.getpostman.com/view/11578947/Tzz7QJTR)
+10. You would also need to setup your database, i.e., add 2 collections namely `users` and `codes`
+11. Example data can be found in the repository itself namely `users.json` and `codes.json`
 
 ## :star: Frontend setup
 
