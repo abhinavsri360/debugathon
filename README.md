@@ -38,8 +38,9 @@ In order to setup the project locally, follow the steps:
 
 1. cd `de-bug-athon`
 2. Rename `.example.env` to `.env` for less painful time :stuck_out_tongue:
-2. `npm i` or `yarn install` to install the dependencies involved in the project. [P.S. - I prefer `yarn`]
-3. `npm start` or `yarn start` to run the project in development mode.
+3. Update `src/shared/baseUrl.js` with the url where your backend is running. [by default this is localhost]
+4. `npm i` or `yarn install` to install the dependencies involved in the project. [P.S. - I prefer `yarn`]
+5. `npm start` or `yarn start` to run the project in development mode.
 
 (: The setup is done! Happy coding!
 
