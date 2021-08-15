@@ -1,9 +1,8 @@
-const mongoose = require("mongoose");
-const MONGOURI = "mongodb://localhost:27017/debug";
+const mongoose = require("mongoose")
 
 const InitiateMongoServer = async () => {
   try {
-    await mongoose.connect(MONGOURI, {
+    await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
